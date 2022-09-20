@@ -1,25 +1,20 @@
+import React from "react"
+import Intro from "./components/Intro"
+import Quiz from "./components/Quiz"
+import Blob from "./components/Blob"
 
-import './App.css';
+export default function App() {
+    const [quiz, setQuiz] = React.useState(false)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const getQuiz = () => {
+        setQuiz(!quiz)
+    }
+
+    return (
+        <main>
+            <Blob position="top"/>
+            { quiz ? <Quiz /> : <Intro getNewQuiz={getQuiz}/> }
+            <Blob position="bottom"/>
+        </main>
+    )
 }
-
-export default App;
